@@ -1,103 +1,59 @@
-#include "IntArray.h"
+#include "IntArray.h"  // Including the class header file
 #include <iostream>
-#include <exception>
-using namespace std;
 
-int main()
-{
+int main() {
+    try {
+        // Creating an instance of the IntArray class with an initial length of 10
+        IntArray arr(10);
 
-    // Создаем массив с 10 элементами
-    IntArray arr(10);
-
-    // заполняем массив элеменами от 0 до 10
-        for (int i = 0; i < 10; ++i)
-        {
+        // Filling the array with values from 1 to 10
+        for (int i = 0; i < 10; ++i) {
             arr[i] = i + 1;
         }
 
-    // Выводим весь массив
-        arr.getArray();
+        // Printing the contents of the array
+        arr.printArray();
 
-        // Resize the array to 8 elements
-
-    try {
+        // Resizing the array to 20 elements
         arr.Resize(20);
-    }
-    catch (const char*)
-    {
-        cout << "Cant resize" << endl;
-    }
 
-    // Выводим весь массив
-    arr.getArray();
+        // Printing the contents of the array after resizing
+        arr.printArray();
 
-    // Добавляем 20 перед 8 элементом
-    try
-    {
-        arr.InsertBefore(20, 0);
-    }
-    catch (const char*)
-    {
-        cout << "Cant insert before" << endl;
-    }
+        // Inserting the number 20 at the beginning
+        arr.insertAtBeginning(20);
 
-    // Выводим весь массив
-    arr.getArray();
+        // Printing the contents of the array after insertion
+        arr.printArray();
 
-    // Удаляем элемент с индексом 3
-    try
-    {
+        // Removing the element at index 3
         arr.RemoveElement(3);
-    }
-    catch (const char*)
-    {
-        cout << "Cant remove element" << endl;
-    }
 
-    // Выводим весь массив
-    arr.getArray();
+        // Printing the contents of the array after removal
+        arr.printArray();
 
-    // Добавляем 30 в конец 
-    try
-    {
+        // Inserting the number 30 at the end of the array
         arr.insertAtEnd(30);
-    }
-    catch (const char*)
-    {
-        cout << "Cant add to the end" << endl;
-    }
 
+        // Printing the contents of the array after inserting at the end
+        arr.printArray();
 
-    // Выводим весь массив
-    arr.getArray();
-
-    // Добавляем 40 в начало
-    try
-    {
+        // Inserting the number 40 at the beginning of the array
         arr.insertAtBeginning(40);
+
+        // Printing the contents of the array after inserting at the beginning
+        arr.printArray();
+
+        // Finding and printing the element at index 5
+        int elementAtIndex5 = arr.findElementWithIndex(5);
+        std::cout << "Element with index 5: " << elementAtIndex5 << std::endl;
     }
-    catch (const char*)
-    {
-        cout << "Cant add to the begin" << endl;
+    catch (const std::exception& e) {
+        // Handling any exceptions that might occur
+        std::cerr << "There is an error: " << e.what() << std::endl;
     }
 
-
-    // Выводим весь массив
-    arr.getArray();
-
-    //Выполняем поиск элемента по индексу
-    try
-    {
-        arr.findElementWithIndex(5);
-    }
-    catch (const char*)
-    {
-        cout << "Cant find element with that index" << endl;
-    }
     return 0;
-
-
-
 }
 
 
